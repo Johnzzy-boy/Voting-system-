@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Register</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="preloader" class="preloader" aria-live="polite">
+    <div class="preloader-card">
+      <div class="preloader-icon">🗳</div>
+      <h2>Loading registration</h2>
+      <p>Preparing the registration form…</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="auth-wrap">
+    <div class="auth-panel auth-left">
+      <div class="auth-left-content">
+        <span class="auth-left-icon">🗳</span>
+        <h1>Register to Vote</h1>
+        <p>Create your secure account and receive your unique voter ID for the next election.</p>
+      </div>
+    </div>
+
+    <div class="auth-panel auth-right">
+      <div class="auth-form-wrap">
+        <span class="section-label">VoteSecure</span>
+        <h2>Create Your Account</h2>
+        <p class="sub">Join the election securely in just a few steps.</p>
+
+        <div id="success-box" class="alert alert-success hidden">
+          <strong>Registration complete.</strong>
+          <div class="mt-1">Your voter ID is: <span id="new-voter-id" class="text-gold text-mono"></span></div>
+          <div id="mail-status" class="mt-1"></div>
+        </div>
+
+        <div id="error-box" class="alert alert-danger hidden"></div>
+
+        <form id="register-form">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="full-name">Full Name</label>
+              <input id="full-name" name="fullName" type="text" placeholder="Enter your full name" required />
+              <div id="full-name-error" class="form-error"></div>
+            </div>
+
+            <div class="form-group full">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <div id="email-error" class="form-error"></div>
+            </div>
+
+            <div class="form-group full">
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="text" placeholder="+254 700 000000" required />
+              <div id="phone-error" class="form-error"></div>
+            </div>
+
+            <div class="form-group full">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" placeholder="Choose a strong password" required />
+              <div id="password-error" class="form-error"></div>
+            </div>
+
+            <div class="form-group full">
+              <label for="confirm-password">Confirm Password</label>
+              <input id="confirm-password" name="confirmPassword" type="password" placeholder="Re-enter your password" required />
+              <div id="confirm-error" class="form-error"></div>
+            </div>
+
+            <div class="form-group full">
+              <div id="pw-strength" class="mt-1">
+                <div style="display:flex; gap:0.35rem; margin-bottom:0.4rem;">
+                  <span class="strength-bar" style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);"></span>
+                  <span class="strength-bar" style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);"></span>
+                  <span class="strength-bar" style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);"></span>
+                  <span class="strength-bar" style="flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,0.08);"></span>
+                </div>
+                <div class="strength-label text-sm" style="color:var(--gray)">Password strength</div>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label>
+                <input id="terms" name="terms" type="checkbox" style="width:auto; margin-right:0.5rem;" />
+                I agree to the terms and conditions
+              </label>
+              <div id="terms-error" class="form-error"></div>
+            </div>
+          </div>
+
+          <button id="submit-btn" class="btn btn-primary btn-full mt-3" type="submit">🗳 Register to Vote</button>
+        </form>
+
+        <div class="mt-3 text-center">
+          <p class="text-sm text-gray">Already registered? <a href="login.html">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="../java/db.js"></script>
+  <script src="../java/register.js"></script>
+  <script src="../java/preloader.js"></script>
+</body>
+</html>

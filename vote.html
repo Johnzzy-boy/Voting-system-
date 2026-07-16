@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Cast Your Vote</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="preloader" class="preloader" aria-live="polite">
+    <div class="preloader-card">
+      <div class="preloader-icon">🗳</div>
+      <h2>Loading ballot</h2>
+      <p>Preparing your voting page…</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="page-wrap">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="brand-icon">🗳</div>
+          Vote<span>Secure</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">Results</a></li>
+        </ul>
+        <div class="nav-user">
+          <span class="nav-badge" id="nav-voter-name">Voter</span>
+          <span class="nav-badge" id="nav-voter-id">ID</span>
+          <button class="btn btn-ghost btn-sm" id="logout-btn">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="timer-bar">
+      <div class="container">
+        <div class="timer-wrap">
+          <div id="election-timer"></div>
+        </div>
+      </div>
+    </div>
+
+    <main style="flex:1; padding-bottom:3rem;">
+      <section class="page-hero container">
+        <span class="eyebrow">Ballot</span>
+        <h1>Cast Your Vote</h1>
+        <p>Select your preferred candidate for each position before the election closes.</p>
+      </section>
+
+      <section class="container">
+        <div id="vote-status" class="mb-2"></div>
+        <div id="vote-main"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 VoteSecure — Secure ballot submission
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="../java/db.js"></script>
+  <script src="../java/vote.js"></script>
+  <script src="../java/preloader.js"></script>
+</body>
+</html>

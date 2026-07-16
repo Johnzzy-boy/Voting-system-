@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Results</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="preloader" class="preloader" aria-live="polite">
+    <div class="preloader-card">
+      <div class="preloader-icon">📊</div>
+      <h2>Loading results</h2>
+      <p>Preparing the latest election results…</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="page-wrap">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="brand-icon">🗳</div>
+          Vote<span>Secure</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="results.html" class="active">Results</a></li>
+        </ul>
+        <div class="nav-user">
+          <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+        </div>
+      </div>
+    </nav>
+
+    <main style="flex:1; padding-bottom:3rem;">
+      <section class="page-hero container">
+        <span class="eyebrow">Election Results</span>
+        <h1 id="results-title">Election Results</h1>
+        <p>Review the latest vote tallies, winners, and participation data for each position.</p>
+      </section>
+
+      <section id="results-summary" class="container"></section>
+      <section id="results-main" class="container"></section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 VoteSecure — Results dashboard
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="../java/db.js"></script>
+  <script src="../java/results.js"></script>
+  <script src="../java/preloader.js"></script>
+</body>
+</html>

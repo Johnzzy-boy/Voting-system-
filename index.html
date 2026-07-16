@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Secure Online Voting</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="preloader" class="preloader" aria-live="polite">
+  <div class="preloader-card">
+    <div class="preloader-icon">🗳</div>
+    <h2>Loading VoteSecure</h2>
+    <p>Preparing the voting experience…</p>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<div class="page-wrap">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🗳</div>
+        Vote<span>Secure</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="results.html">Results</a></li>
+      </ul>
+      <div class="nav-user">
+        <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main style="flex:1">
+    <section class="home-hero container">
+      <span class="section-label">Secure · Transparent · Democratic</span>
+      <h1 class="tagline">
+        Your Vote.<br>Your <span>Voice</span>.<br>Secured.
+      </h1>
+      <p style="max-width:520px;margin:0 auto;font-size:1.05rem;color:var(--gray-light)">
+        VoteSecure is a cryptographically secure, tamper-resistant online voting platform.
+        Register, verify your identity, and cast your ballot with confidence.
+      </p>
+      <div class="hero-ctas">
+        <a href="register.html" class="btn btn-primary btn-lg">🗳 Register to Vote</a>
+        <a href="login.html"    class="btn btn-secondary btn-lg">🔐 Sign In</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="container">
+      <div class="text-center mb-3">
+        <span class="section-label">Why VoteSecure</span>
+        <h2>Built for Trust</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>PBKDF2 Password Hashing</h3>
+          <p>Passwords are hashed with 100,000 iterations using the Web Crypto API — never stored in plain text.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡</div>
+          <h3>Duplicate Vote Prevention</h3>
+          <p>Unique composite indexes in IndexedDB ensure each voter can only cast one ballot per position.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <h3>Election Timer</h3>
+          <p>Admin-controlled start and end times. Voting is locked outside the election window.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Live Results</h3>
+          <p>Real-time vote tallying with percentage bars and automatic winner declaration after polls close.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👤</div>
+          <h3>Voter Registration</h3>
+          <p>Auto-generated unique Voter IDs. Email deduplication prevents multiple accounts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>Admin Dashboard</h3>
+          <p>Manage candidates, configure elections, monitor participation, suspend or remove voters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="container" style="padding-bottom:4rem">
+      <div class="text-center mb-3">
+        <span class="section-label">Getting Started</span>
+        <h2>How It Works</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:800px;margin:0 auto">
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem">1️⃣</div>
+          <h3 style="color:var(--gold);margin-bottom:0.4rem">Register</h3>
+          <p>Create your account and receive your unique Voter ID.</p>
+        </div>
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem">2️⃣</div>
+          <h3 style="color:var(--gold);margin-bottom:0.4rem">Log In</h3>
+          <p>Sign in with your Voter ID and password during the election period.</p>
+        </div>
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem">3️⃣</div>
+          <h3 style="color:var(--gold);margin-bottom:0.4rem">Cast Ballot</h3>
+          <p>Review candidates and select your choice for each position.</p>
+        </div>
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem">4️⃣</div>
+          <h3 style="color:var(--gold);margin-bottom:0.4rem">View Results</h3>
+          <p>See live tallies and final winners after polls close.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <p class="text-sm text-gray">Admin credentials (demo): Voter ID <code style="color:var(--gold)">******</code> / Password <code style="color:var(--gold)">******</code></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 VoteSecure By Jcoder's </div>
+  </footer>
+
+</div>
+<div id="toast-container"></div>
+<script src="../java/db.js"></script>
+<script src="../java/preloader.js"></script>
+</body>
+</html>

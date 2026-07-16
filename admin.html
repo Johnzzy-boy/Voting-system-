@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Admin Dashboard</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div id="preloader" class="preloader" aria-live="polite">
+      <div class="preloader-card">
+        <div class="preloader-icon">🗳</div>
+        <h2>Loading dashboard</h2>
+        <p>Preparing election data and admin controls…</p>
+        <div class="preloader-bar"><span></span></div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="brand-icon">🗳</div>
+          Vote<span>Secure</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="admin.html" class="active">Admin</a></li>
+        </ul>
+        <div class="nav-user">
+          <span class="nav-badge" id="nav-admin-name">Administrator</span>
+          <button class="btn btn-ghost btn-sm" id="logout-btn">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-head">
+          <span class="nav-badge">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close" type="button" aria-label="Close menu">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="admin.html" class="active">Admin</a></li>
+        </ul>
+        <div class="mobile-nav-user">
+          <span class="nav-badge" id="mobile-nav-admin-name">Administrator</span>
+          <button class="btn btn-primary btn-full" id="mobile-logout-btn" type="button">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <main style="flex: 1; padding-bottom: 3rem;">
+      <section class="page-hero container">
+        <span class="eyebrow">Administration Panel</span>
+        <h1>Election Command Center</h1>
+        <p>Manage voters, candidates, election timing, and live results from one secure dashboard.</p>
+      </section>
+
+      <section class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon gold">👥</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-voters">0</div>
+              <div class="stat-label">Active Voters</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue">🗳️</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-candidates">0</div>
+              <div class="stat-label">Candidates</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon gold">🗒️</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-votes">0</div>
+              <div class="stat-label">Ballots Cast</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">⏱</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-status">Inactive</div>
+              <div class="stat-label">Election Status</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">📈</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-participation">0%</div>
+              <div class="stat-label">Participation</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="panel-overview">Overview</button>
+          <button class="tab-btn" data-tab="panel-voters">Voters</button>
+          <button class="tab-btn" data-tab="panel-candidates">Candidates</button>
+          <button class="tab-btn" data-tab="panel-settings">Settings</button>
+        </div>
+
+        <div id="panel-overview" class="tab-panel active">
+          <div class="card">
+            <div class="card-header">
+              <h2>Live Results Preview</h2>
+            </div>
+            <div id="admin-results"></div>
+          </div>
+
+        </div>
+
+        <div id="panel-voters" class="tab-panel">
+          <div class="card">
+            <div class="card-header">
+              <h2>Registered Voters</h2>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Voter ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Registered</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="voters-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-candidates" class="tab-panel">
+          <div class="card">
+            <div class="card-header">
+              <h2>Election Candidates</h2>
+              <button class="btn btn-primary btn-sm" id="add-candidate-btn">+ Add Candidate</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Position</th>
+                    <th>Party</th>
+                    <th>Manifesto</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="candidates-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-settings" class="tab-panel">
+          <div class="card">
+            <div class="card-header">
+              <h2>Election Settings</h2>
+            </div>
+            <form id="election-settings-form">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label for="election-title">Election Title</label>
+                  <input id="election-title" name="title" type="text" placeholder="General Election" />
+                </div>
+
+                <div class="form-group">
+                  <label for="election-start">Start Date & Time</label>
+                  <input id="election-start" name="start" type="datetime-local" />
+                </div>
+                <div class="form-group">
+                  <label for="election-end">End Date & Time</label>
+                  <input id="election-end" name="end" type="datetime-local" />
+                </div>
+              </div>
+
+              <div class="settings-summary">
+                <div class="settings-summary-card">
+                  <div class="settings-summary-title">Current Status</div>
+                  <div id="election-current-status"></div>
+                </div>
+                <div class="settings-summary-card">
+                  <div class="settings-summary-title">Voting Window</div>
+                  <div id="election-window-summary" class="settings-summary-text">Set a start and end time to activate the election schedule.</div>
+                </div>
+              </div>
+
+              <div class="form-hint mt-2">
+                Choose a clear opening and closing time so voters can cast ballots only within the active period.
+              </div>
+              <div class="mt-3">
+                <button class="btn btn-primary" type="submit">Save Settings</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 VoteSecure — Admin dashboard
+      </div>
+    </footer>
+  </div>
+
+  <div class="ticker-floating">
+    <div class="ticker-wrap">
+      <div class="ticker-label">LIVE</div>
+      <div id="ticker-feed" class="ticker-feed"></div>
+    </div>
+  </div>
+
+  <button id="imbomah-launcher" class="imbomah-launcher" type="button" aria-label="Open Imbomah assistant">🤖</button>
+
+  <div id="imbomah-window" class="imbomah-window" aria-hidden="true">
+    <div class="imbomah-header">
+      <div>
+        <div class="imbomah-title">Imbomah Assistant</div>
+        <div class="imbomah-subtitle">Election analysis support</div>
+      </div>
+      <button id="imbomah-close" class="btn btn-ghost btn-sm" type="button">Close</button>
+    </div>
+    <div id="imbomah-messages" class="assistant-messages"></div>
+    <div class="assistant-suggestions">
+      <button class="btn btn-sm btn-secondary assistant-suggest-btn" data-prompt="Summarize the current election results">Summarize</button>
+      <button class="btn btn-sm btn-secondary assistant-suggest-btn" data-prompt="Who is currently leading?">Leader</button>
+      <button class="btn btn-sm btn-secondary assistant-suggest-btn" data-prompt="Analyze turnout and participation">Turnout</button>
+    </div>
+    <form id="imbomah-form" class="assistant-form">
+      <input id="imbomah-input" type="text" placeholder="Ask Imbomah about leaders, turnout, or risks..." />
+      <button class="btn btn-primary" type="submit">Ask</button>
+    </form>
+  </div>
+
+  <div id="candidate-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="candidate-modal-title">Add Candidate</h3>
+        <button type="button" class="btn btn-ghost btn-sm" id="candidate-modal-close">Close</button>
+      </div>
+      <form id="candidate-form">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="c-name">Candidate Name</label>
+            <input id="c-name" name="name" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="c-position">Position</label>
+            <input id="c-position" name="position" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="c-party">Party</label>
+            <input id="c-party" name="party" type="text" required />
+          </div>
+          <div class="form-group full">
+            <label for="c-manifesto">Manifesto</label>
+            <textarea id="c-manifesto" name="manifesto"></textarea>
+          </div>
+          <div class="form-group full">
+            <label for="candidate-photo-file">Candidate Photo</label>
+            <input id="candidate-photo-file" name="photoFile" type="file" accept="image/*" />
+            <div class="form-hint">Choose an image from your device to upload for the candidate.</div>
+            <img id="photo-preview" src="" alt="Candidate preview" style="display:none; width:100%; max-height:220px; margin-top:0.75rem; object-fit:cover; border-radius: var(--radius-lg);" />
+          </div>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-primary" id="save-candidate-btn" type="submit">Save Candidate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="../java/db.js"></script>
+  <script src="../java/admin.js"></script>
+</body>
+</html>

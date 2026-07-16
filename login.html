@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/media/JOHN.jpg" type="image/x-icon">
+  <title>VoteSecure — Login</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="preloader" class="preloader" aria-live="polite">
+    <div class="preloader-card">
+      <div class="preloader-icon">🔐</div>
+      <h2>Loading secure access</h2>
+      <p>Preparing your sign-in screen…</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="auth-wrap">
+    <div class="auth-panel auth-left">
+      <div class="auth-left-content">
+        <span class="auth-left-icon">🔐</span>
+        <h1>Secure Access</h1>
+        <p>Sign in to cast your vote, review your ballot, or manage the election as an administrator.</p>
+      </div>
+    </div>
+
+    <div class="auth-panel auth-right">
+      <div class="auth-form-wrap">
+        <span class="section-label">VoteSecure</span>
+        <h2>Welcome Back</h2>
+        <p class="sub">Enter your voter credentials to continue.</p>
+
+        <form id="login-form">
+          <div class="form-group mb-2">
+            <label for="voter-id">Voter ID</label>
+            <input id="voter-id" name="voterId" type="text" placeholder="e.g. JOHN SMITH" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Enter your password" required />
+          </div>
+
+          <div id="login-error" class="form-error show hidden"></div>
+
+          <button id="login-btn" class="btn btn-primary btn-full mt-2" type="submit">🔐 Sign In</button>
+        </form>
+
+        <div class="mt-3 text-center">
+          <p class="text-sm text-gray">New voter? <a href="register.html">Create an account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="../java/db.js"></script>
+  <script src="../java/login.js"></script>
+  <script src="../java/preloader.js"></script>
+</body>
+</html>
